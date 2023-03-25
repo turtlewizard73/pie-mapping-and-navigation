@@ -98,3 +98,6 @@ Add sources, links, documentations, any useful information, that might be useful
         - https://www.youtube.com/watch?v=i8AdX6OCvHg
         - Images and video
     - by using equipment provided by karman studio shoot video or take pictures from robot, then make a 3d model by using some software. Touch up the generated model and import it into gazeboo.
+
+2. tutel bot stuff
+https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#notices
