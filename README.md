@@ -8,6 +8,7 @@ Repo for Robotrendszerek laboratórium project
 
 ## Github workflow
 How to add new functionality to the stack:
+After working main branch
 1. Create feature/fix branch from **main**
 2. Develop feature set
 3. Test
@@ -23,67 +24,55 @@ Branch types:
     - example name: fix-robot-color
 
 ## El Plan
-Sorrend féle valami, trello?  
-**Nulladik iteráció**  
--> cél: neki tudjunk kezdeni a munkának
--> kell: egy meeting
-1. github workflow megbeszélés
-2. használjunk-e trellot a feladatokhoz?
-3. ki mivel szeretne foglalkozni? -> taskok szét osztása érdeklődési körök szerint
-4. írjunk e minden readme-t angolul (illene)
-    - szóval lehet már ezt az egészet angolul kellett volna írnom
+**I. milestone - Basic models**
+Define physics
+1. Robot model: turtlebot
+    - wheel radius
+    - wheel spearation
+    - lidar link
+    - ... anything needded for starting mapping
+    - if easy and do not compromise simulation use full model
+    - xacro -> urdf -> tf tree
+2. World model:  
+    - Closed  --> room without door
+    - Walls whit doors
+    - Obsticles
+    - world launch file
+3. Basic launch file to run simulation with robot model and world
 
-**Első iteráció - basic mapping**   
--> cél: legyen térkép  
--> kell: mapping package + lidar + robot model + szoba model
-1. basic mapping összerakás turtle botra
-2. mapping stack (jelentsen ez bármit is) - főként utánanézni fasza packageknek
-3. hardwerek szimulációja (doboz rajta egy lidarral)
-    - robot urdf (nagyon alap doboz)
-    - lidar -> xacro
-4. alap launch file ami összerántja az egészet
-    - külön launch robotnak
-    - külön launch word + gazebo
-    - esetleg egy rvizes config file (utánanézni)
-5. map modellezés (legyen valami szoba amiket fel lehet térképezni)
+**II. milestone - Mapping**  
+1. lidar packages
+    - actual robot -> lidar type
+    - simulating lidar in gazeboo
+    - config lidar parameters
+2. mapping package
+    - input: lidar
+    - output: map (how to save map, map format)
+3. odometry
+    - ???
+    - sensor fusion -> IMU (type) -> package
+4. do mapping
+    - launch file + mapping package
+    - teleop the shit out of the robot
+    - save the map
 
-**Második iteráció - navigáció**  
--> cél: robot térképen el tudjun jutni valahova  
--> kell: navigációs package + legyen map
-1. basic navigáció turtle botos mintán
-2. kicsivel jobb robot leírás -> xacro
-    - kerekek a lényegek
-3. kicsivel jobb szoba modell
-    - bonyolultabb geometria
-    - akadályok!
-4. talán itt jön be az odometria is
-    - ezt szimulációban annyira nem vágom,  
-    de illene szimulálni főleg kovariancia miatt ( nem tudom mi az)
+**III. milestone - Navigation**  
+Automate robot to position
+1. global planner
+2. (global costmap)
 
-**Harmadik iteráció - modellek véglegesítése - PÁRHUZAMOSÍTHATÓ**  
--> cél: legyen egy fasza robot modell + szoba  
--> kell: végtelen modellezés plusz valami fizikai kiindulási alap
-1. bonyolultabb szoba word modell
-2. bonyolultabb robot
-    - milyen robot? turtle, vagy 3d scannelve valami
-3. térde imára, hogy itt már nem romlik el a stack
+**IV. milestone - Simulating moving obsticles**  
+1. Obstacle model
+2. Simulate movement
+3. local costmap & local planner
 
-**Negyedik iteráció - mozgó akadályok**  
--> cél: local costmap-en látszódjanak mozgó akadályok  
--> kell: tudjunk navigálni a globális mapen
-Ez a rész annyira nem világos
-1. kell lokális térképezés
-    - ha van egy globális mapünk akkor rá tudjuk rakni a dinamikusan megjelenő akadályokat
-2. costmap-ek
-    - lokális és globális
-3. itt valszeg lehet meghal az egész navigációs stack
-4. az elejétől amúgy figyelembe kellene venni a lokális és globális problémát
-
-**Utolsó iteráció - véglegesítés**  
--> cél: leadható legyen
-1. README megírás
-2. tesztelés  
-3. bugok kigyomlálása
+**V. milestone - Finalizing**  
+1. Models are ok
+2. Navigation works
+3. extra: aruco marker -> initial position
+4. README
+5. Hand in
+6. Beer(s)
 
 
 ## Sources
