@@ -1,6 +1,6 @@
 [submodule "workspace/src/pysdf"]
 	path = workspace/src/pysdf
-	url = https://github.com/MOGI-ROS/pysdf
+	url = git@github.com:andreasBihlmaier/pysdf.git
 [submodule "lesson-repos/Week-1-2-Introduction-to-ROS"]
 	path = lesson-repos/Week-1-2-Introduction-to-ROS
 	url = git@github.com:MOGI-ROS/Week-1-2-Introduction-to-ROS.git
