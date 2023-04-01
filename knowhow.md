@@ -8,3 +8,16 @@ Add these lines (shadows=0)
       <shadows>false</shadows>
     </scene>
 ```
+
+##  PYSDF converter package
+[REPO](https://github.com/MOGI-ROS/pysdf)
+```
+rosrun pysdf sdf2urdf.py -h
+```
+Dependencies (pip):
+```
+pip3 install parse pysdf
+```
+  
+## Removing submodule
+[Stackoverflow](https://stackoverflow.com/questions/20929336/git-submodule-add-a-git-directory-is-found-locally-issue)

@@ -16,3 +16,6 @@
 [submodule "lesson-repos/Week-11-12-Robot-arms"]
 	path = lesson-repos/Week-11-12-Robot-arms
 	url = git@github.com:MOGI-ROS/Week-11-12-Robot-arms.git
+[submodule "workspace/src/pysdf"]
+	path = workspace/src/pysdf
+	url = git@github.com:andreasBihlmaier/pysdf.git
