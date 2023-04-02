@@ -1,0 +1,36 @@
+<sdf version='1.7'>
+  <world name="default">
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+    <!-- An actor -->
+    <actor name="actor_walking">
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walk">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+    </actor>
+<!-- 
+    <actor name="jeff">
+      <skin>
+        <filename>file:///home/turtlewizard/bme_msc1/ros-rob-project-mapping/workspace/src/robot_startup/worlds/actors/bob_the_walker/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walk">
+        <filename>file:///home/turtlewizard/bme_msc1/ros-rob-project-mapping/workspace/src/robot_startup/worlds/actors/bob_the_walker/meshes/walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+    </actor> -->
+
+  </world>
+</sdf>
