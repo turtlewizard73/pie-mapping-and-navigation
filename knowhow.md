@@ -8,3 +8,7 @@ Add these lines (shadows=0)
       <shadows>false</shadows>
     </scene>
 ```
+
+## Camera distortion
+
+https://classic.gazebosim.org/tutorials?tut=camera_distortion&cat=sensors
