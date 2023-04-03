@@ -2,12 +2,12 @@
 <sdf version="1.6">
   <actor name="actor">
      <skin>
-        <filename>model://Walking actor/meshes/walk.dae</filename>
+        <filename>file:///home/turtlewizard/bme_msc1/ros-rob-project-mapping/workspace/src/robot_startup/worlds/actors/bob_the_walker/meshes/walk.dae</filename>
         <scale>1.0</scale>
      </skin>
      <pose>0 0 0 0 0 0</pose>
      <animation name="walking">
-        <filename>model://Walking actor/meshes/walk.dae</filename>
+        <filename>file:///home/turtlewizard/bme_msc1/ros-rob-project-mapping/workspace/src/robot_startup/worlds/actors/bob_the_walker/meshes/walk.dae</filename>
         <scale>1.000000</scale>
         <interpolate_x>true</interpolate_x>
      </animation>
