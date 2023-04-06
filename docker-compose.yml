@@ -1,0 +1,23 @@
+version: '2.4'
+
+services:
+  service_robot_dev:
+    image: ros-rob-project-mapping
+    build:
+      context: .
+    container_name: ros-rob-project-mapping
+    network_mode: "host"
+    environment:
+      - DISPLAY=$WINDOWS_IP:0
+    logging:
+      driver: "local"
+    stdin_open: true
+    tty: true
+    stop_signal: SIGINT
+    privileged: true
+    # volumes:
+    #   - /dev:/dev
+    #   - ./:/home/ubuntu/ros-rob-project-mapping
+    #   - ~/.gitconfig:/home/ubuntu/.gitconfig
+    #   - ~/.ssh:/home/ubuntu/.ssh
+    #   - ~/.bash_history:/home/ubuntu/.bash_history

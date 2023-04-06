@@ -1,0 +1,157 @@
+# syntax = docker/dockerfile:1.3
+
+ARG FROM_IMAGE=ros:humble
+ARG STANDALONE=false
+
+# TODO separate hardware, simulation and production
+
+
+# Multi-stage for caching
+FROM $FROM_IMAGE AS cacher
+
+# Clone source
+WORKDIR /home/ubuntu/ros2-service-robot
+COPY . .
+
+# Copy manifests for caching
+RUN find . -mindepth 1 -maxdepth 2 -name "src" -type d -printf '%P\n' \
+      | xargs -I % mkdir -p /tmp/ros2-service-robot/% && \
+    find . -name "package.xml" \
+      | xargs cp --parents -t /tmp/ros2-service-robot && \
+    find . -name "COLCON_IGNORE" \
+      | xargs cp --parents -t /tmp/ros2-service-robot || true
+
+
+# Multi-stage for building
+FROM $FROM_IMAGE AS installer
+
+# Config dependencies install
+ARG DEBIAN_FRONTEND=noninteractive
+
+# TODO cache apt installs: https://gist.github.com/dergachev/8441335
+# gives the following error:
+# E: Failed to fetch http://packages.ros.org/ros2/ubuntu/dists/focal/InRelease  403  Forbidden [IP: 172.17.0.1 8000]
+# E: The repository 'http://packages.ros.org/ros2/ubuntu focal InRelease' is not signed.
+
+# REMOVEME: packages need to be upgraded from kisak-mesa repo
+# libegl-mesa0 libgbm1 libgl1-mesa-dev
+# libgl1-mesa-dri libglapi-mesa libglx-mesa0 libllvm15
+RUN \
+    --mount=type=cache,target=/var/cache/apt,mode=0777,sharing=locked \
+    --mount=type=cache,target=/root/.cache/pip,mode=0777,sharing=locked \
+    apt update && apt install -y \
+        software-properties-common && \
+    add-apt-repository ppa:kisak/kisak-mesa && \
+    apt update && apt upgrade -y \
+        libegl-mesa0 \
+        libgbm1 \
+        libgl1-mesa-dev \
+        libgl1-mesa-dri \
+        libglapi-mesa \
+        libglx-mesa0 \
+        libllvm15
+
+# Set root password
+RUN echo "root:enjoy"|chpasswd
+
+# Create new non-priviliged user
+RUN useradd ubuntu --create-home --shell /bin/bash && \
+    echo "ubuntu:enjoy"|chpasswd && \
+    usermod -aG sudo,video,dialout ubuntu
+USER ubuntu
+
+# Install system dependencies with caching apt and pip package lists
+ARG STANDALONE
+COPY apt-dependencies.txt apt-dependencies.txt
+COPY apt-dependencies-dev.txt apt-dependencies-dev.txt
+RUN rm -f /etc/apt/apt.conf.d/docker-clean; \
+    echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+RUN \
+    --mount=type=cache,target=/var/cache/apt,mode=0777,sharing=locked \
+    --mount=type=cache,target=/root/.cache/pip,mode=0777,sharing=locked \
+    apt update && \
+    xargs -a apt-dependencies.txt apt install -y --no-install-recommends && \
+    if [ "$STANDALONE" = "false" ]; then \
+        yes | unminimize && \
+        xargs -a apt-dependencies-dev.txt apt install -y --no-install-recommends; \
+    fi && \
+    colcon mixin update && \
+    colcon metadata update
+
+# Install pip packages
+COPY pip-dependencies.txt pip-dependencies.txt
+RUN \
+    --mount=type=cache,target=/root/.cache/pip,mode=0777,sharing=locked \
+    pip3 install -r pip-dependencies.txt
+
+ARG STANDALONE
+ARG RUN_TESTS
+ARG MAKEFLAGS
+ARG MIXINS
+ARG CCACHE_DIR
+ARG CLEAN_ALL
+ARG CLEAN_PKGS
+ENV MAKEFLAGS "$MAKEFLAGS"
+ENV MIXINS "$MIXINS"
+ENV CCACHE_DIR "$CCACHE_DIR"
+WORKDIR /home/ubuntu/ros2-service-robot
+COPY . .
+SHELL ["/bin/bash", "-c"]
+RUN \
+    --mount=type=cache,target=/home/ubuntu/ros2-service-robot/workspace/build,sharing=locked \
+    --mount=type=cache,target=/home/ubuntu/ros2-service-robot/workspace/install,sharing=locked \
+    if [ "$STANDALONE" = "true" ]; then \
+        echo "Setting up STANDALONE environment" && \
+
+        cd workspace && \
+        . /home/ubuntu/ros2-service-robot/utils/setup_environment && \
+
+        if [ "$CLEAN_ALL" = "true" ]; then \
+            echo "Cleaning all package cache" && \
+            colcon clean packages -y --clean-match "*"; \
+            if [ -d "$CCACHE_DIR" ]; then \
+                rm -rf $CCACHE_DIR/*; \
+            fi; \
+        elif [ -n "$CLEAN_PKGS" ]; then \
+            echo "Cleaning packages: $CLEAN_PKGS" && \
+            colcon clean packages -y \
+                --packages-select $CLEAN_PKGS; \
+        fi && \
+
+        rosstack build && \
+        if [ "$RUN_TESTS" == "true" ]; then \
+            rosstack run_tests || exit 1; \
+        fi && \
+        mkdir /opt/ros/ws && \
+        cp -r install /install && \
+        cd /home/ubuntu/ros2-service-robot && \
+        rm -r act docs hooks workspace/src workspace/log; \
+
+    elif [ "$STANDALONE" = "false" ]; then \
+        echo "Setting up not STANDALONE environment" && \
+
+        # Set up environment
+        curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash \
+            -o /home/ubuntu/git-completion.bash && \
+        echo "source /home/ubuntu/ros2-service-robot/utils/setup_environment" >> /home/ubuntu/.bashrc && \
+        cd /home/ubuntu/ros2-service-robot/workspace/src && \
+
+        # Source .bashrc even for non-interactive shells
+        sed -e '/[ -z "$PS1" ] && return/s/^/#/g' -i /home/ubuntu/.bashrc; \
+
+    else \
+        echo "Build arg STANDALONE should be either 'true' or 'false'. Exiting." && \
+        exit 1; \
+    fi
+
+RUN \
+    if [ "$STANDALONE" = "true" ]; then \
+        mv /install /home/ubuntu/ros2-service-robot/workspace; \
+    fi
+
+# Switch user
+USER ubuntu
+
+
+ENTRYPOINT ["/home/ubuntu/ros2-service-robot/utils/setup_environment"]
+CMD ["bash"]
