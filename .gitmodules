@@ -19,3 +19,7 @@
 [submodule "lesson-repos/Week-11-12-Robot-arms"]
 	path = lesson-repos/Week-11-12-Robot-arms
 	url = git@github.com:MOGI-ROS/Week-11-12-Robot-arms.git
+[submodule "workspace/src/turtlebot3"]
+	path = workspace/src/turtlebot3
+	url = git@github.com:ROBOTIS-GIT/turtlebot3.git
+	branch = noetic-devel
