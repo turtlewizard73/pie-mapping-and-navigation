@@ -1,6 +1,3 @@
-[submodule "workspace/src/pysdf"]
-	path = workspace/src/pysdf
-	url = https://github.com/MOGI-ROS/pysdf
 [submodule "lesson-repos/Week-1-2-Introduction-to-ROS"]
 	path = lesson-repos/Week-1-2-Introduction-to-ROS
 	url = git@github.com:MOGI-ROS/Week-1-2-Introduction-to-ROS.git
@@ -19,3 +16,7 @@
 [submodule "lesson-repos/Week-11-12-Robot-arms"]
 	path = lesson-repos/Week-11-12-Robot-arms
 	url = git@github.com:MOGI-ROS/Week-11-12-Robot-arms.git
+[submodule "workspace/src/turtlebot3"]
+	path = workspace/src/turtlebot3
+	url = git@github.com:ROBOTIS-GIT/turtlebot3.git
+	branch = noetic-devel
