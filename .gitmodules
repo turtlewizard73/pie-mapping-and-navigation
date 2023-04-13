@@ -19,3 +19,6 @@
 [submodule "lesson-repos/Week-11-12-Robot-arms"]
 	path = lesson-repos/Week-11-12-Robot-arms
 	url = git@github.com:MOGI-ROS/Week-11-12-Robot-arms.git
+[submodule "workspace/src/gazebo-ros-actor-plugin"]
+	path = workspace/src/gazebo-ros-actor-plugin
+	url = git@github.com:blackcoffeerobotics/gazebo-ros-actor-plugin.git
