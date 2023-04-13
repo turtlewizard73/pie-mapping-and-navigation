@@ -28,11 +28,11 @@
     <actor name="actor1">
       <pose>0 0 1.2138 0 0 0</pose>
       <skin>
-        <filename>custom_walk.dae</filename>
+        <filename>model://custom_walk.dae</filename>
         <scale>1.0</scale>
       </skin>
       <animation name="walking">
-        <filename>custom_walk.dae</filename>
+        <filename>model:///custom_walk.dae</filename>
         <scale>1.000000</scale>
         <interpolate_x>true</interpolate_x>
       </animation>
@@ -55,6 +55,7 @@
         <scaling collision="RightUpLeg_RightLeg_collision" scale="8.0 8.0 1.0 "/>
         <scaling collision="RightLeg_RightFoot_collision" scale="8.0 8.0 1.0"/>
         <scaling collision="RightFoot_RightToeBase_collision" scale="4.0 4.0 1.5"/>
+        
         <scaling collision="LowerBack_Spine_collision" scale="12.0 20.0 5.0" pose="0.05 0 0 0 -0.2 0"/>
         <scaling collision="Spine_Spine1_collision" scale="0.01 0.001 0.001"/>
         <scaling collision="Neck_Neck1_collision" scale="0.01 0.001 0.001"/>
