@@ -86,6 +86,7 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <model name='20m_corridor'>
+      <static>1</static>
       <pose frame=''>2.85775 1.23388 0 0 -0 0</pose>
       <link name='Wall_19'>
         <collision name='Wall_19_Collision'>
