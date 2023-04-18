@@ -20,6 +20,3 @@
 	path = workspace/src/turtlebot3
 	url = git@github.com:ROBOTIS-GIT/turtlebot3.git
 	branch = noetic-devel
-[submodule "workspace/src/pgm_map_creator"]
-	path = workspace/src/pgm_map_creator
-	url = https://github.com/MOGI-ROS/pgm_map_creator
