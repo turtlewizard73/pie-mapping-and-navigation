@@ -20,3 +20,9 @@
 	path = workspace/src/turtlebot3
 	url = git@github.com:ROBOTIS-GIT/turtlebot3.git
 	branch = noetic-devel
+[submodule "workspace/src/--force"]
+	path = workspace/src/--force
+	url = git@github.com:turtlewizard73/pgm_map_creator.git
+[submodule "workspace/src/pgm_map_creator"]
+	path = workspace/src/pgm_map_creator
+	url = git@github.com:turtlewizard73/pgm_map_creator.git
