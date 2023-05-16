@@ -3,4 +3,7 @@ ros-noetic-turtlebot3-msgs
 ros-noetic-turtlebot3-gazebo
 
 ros-noetic-robot-pose-ekf
-ros-$(rosversion -d)-interactive-marker-twist-server
+ros-noetic-interactive-marker-twist-server
+ros-noetic-hector-slam 
+ros-noetic-map-server 
+ros-noetic-gmapping 
