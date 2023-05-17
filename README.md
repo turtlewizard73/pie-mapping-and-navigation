@@ -90,3 +90,7 @@ Add sources, links, documentations, any useful information, that might be useful
 
 2. tutel bot stuff
 https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#notices
+
+3. packages:
+magic imu arrow
+http://wiki.ros.org/rviz_imu_plugin
