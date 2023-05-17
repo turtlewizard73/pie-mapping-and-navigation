@@ -20,3 +20,6 @@
 	path = workspace/src/turtlebot3
 	url = git@github.com:ROBOTIS-GIT/turtlebot3.git
 	branch = noetic-devel
+[submodule "workspace/src/turtlebot3_simulations"]
+	path = workspace/src/turtlebot3_simulations
+	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
