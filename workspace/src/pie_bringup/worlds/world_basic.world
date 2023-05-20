@@ -5904,7 +5904,7 @@
             </script>
           </material>
         </visual>
-        <collision name='front_left_leg'>
+        <collision name='front_left_legc'>
           <pose>0.68 0.38 0.5 0 -0 0</pose>
           <geometry>
             <cylinder>
@@ -5941,7 +5941,7 @@
             </script>
           </material>
         </visual>
-        <collision name='front_right_leg'>
+        <collision name='front_right_legc'>
           <pose>0.68 -0.38 0.5 0 -0 0</pose>
           <geometry>
             <cylinder>
@@ -5978,7 +5978,7 @@
             </script>
           </material>
         </visual>
-        <collision name='back_right_leg'>
+        <collision name='back_right_legc'>
           <pose>-0.68 -0.38 0.5 0 -0 0</pose>
           <geometry>
             <cylinder>
@@ -6015,7 +6015,7 @@
             </script>
           </material>
         </visual>
-        <collision name='back_left_leg'>
+        <collision name='back_left_legc'>
           <pose>-0.68 0.38 0.5 0 -0 0</pose>
           <geometry>
             <cylinder>
