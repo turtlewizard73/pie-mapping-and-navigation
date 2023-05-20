@@ -12,7 +12,7 @@
   </joint>
 
   <link name="base_link">
-    <visual name='base_link_visual'>
+    <visual>
       <origin xyz="-0.032 0 0.0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://turtlebot3_description/meshes/bases/burger_base.stl" scale="0.001 0.001 0.001"/>
@@ -20,7 +20,7 @@
       <material name="light_black"/>
     </visual>
 
-    <collision name='base_link_collision'>
+    <collision>
       <origin xyz="-0.032 0 0.070" rpy="0 0 0"/>
       <geometry>
         <box size="0.140 0.140 0.143"/>
@@ -36,18 +36,15 @@
     </inertial>
   </link>
 
-  <!-- Wheels -->
   <joint name="wheel_left_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_left_link"/>
     <origin xyz="0.0 0.08 0.023" rpy="-1.57 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
   <link name="wheel_left_link">
-    <visual name='wheel_left_visual'>
+    <visual>
       <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
         <mesh filename="package://turtlebot3_description/meshes/wheels/left_tire.stl" scale="0.001 0.001 0.001"/>
@@ -55,7 +52,7 @@
       <material name="dark"/>
     </visual>
 
-    <collision name='wheel_left_collision'>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
@@ -76,12 +73,10 @@
     <child link="wheel_right_link"/>
     <origin xyz="0.0 -0.080 0.023" rpy="-1.57 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
   <link name="wheel_right_link">
-    <visual name='wheel_right__visual'>
+    <visual>
       <origin xyz="0 0 0" rpy="1.57 0 0"/>
       <geometry>
         <mesh filename="package://turtlebot3_description/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
@@ -89,7 +84,7 @@
       <material name="dark"/>
     </visual>
 
-    <collision name='wheel_right_collision'>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
