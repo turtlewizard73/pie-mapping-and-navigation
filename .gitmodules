@@ -26,3 +26,6 @@
 [submodule "workspace/src/follow_waypoints"]
 	path = workspace/src/follow_waypoints
 	url = https://github.com/danielsnider/follow_waypoints.git
+[submodule "workspace/src/gazebo_actor_collisions_plugin"]
+	path = workspace/src/gazebo_actor_collisions_plugin
+	url = https://github.com/EnjoyRobotics/gazebo_actor_collisions_plugin.git
