@@ -1,7 +1,7 @@
 <!-- Launch robot ready for remote control -->
 <launch>
   <arg name="model" default="burger"/>
-  <arg name="world_file" default="$(find pie_bringup)/worlds/world_basic.world"/>
+  <arg name="world" default="$(find pie_bringup)/worlds/world_basic.world"/>
   <arg name="x_pos" default="2.5"/>
   <arg name="y_pos" default="0.1"/>
   <arg name="z_pos" default="0.0"/>
@@ -11,7 +11,7 @@
 
 <!-- Launching world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="world_name" value="$(arg world)"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
@@ -20,15 +20,25 @@
   </include>
 
 <!-- Importing robot description -->
-  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro'" />
-  <param name="robot_description" command="$(arg urdf_file) laser_visual:=$(arg visualize_laser)" />
+  <arg name="xacro_file" default="$(find xacro)/xacro --inorder '$(find pie_bringup)/urdf/pie_bot.urdf.xacro'"/>
+  <param name="robot_description" command="$(arg xacro_file) laser_visual:=$(arg visualize_laser)"/>
 
-<!-- Launching gazebo with turtlebot3_burger.urdf.xacro and turtlebot3_burger.gazebo.xacro -->
-  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"
-    args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg yaw_pos) -param robot_description" />
 
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-    <param name="publish_frequency" type="double" value="50.0" />
+  <!-- Send joint values-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+
+   <!-- Send robot states to tf -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <param name="publish_frequency" type="double" value="20.0" />
     <param name="tf_prefix" value="$(arg multi_robot_name)"/>
   </node>
+
+  <!-- Launching gazebo with turtlebot3_burger.urdf.xacro and turtlebot3_burger.gazebo.xacro -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+    args="-urdf -param robot_description -model pie_bot
+      -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg yaw_pos)"/>
+
 </launch>
