@@ -1,7 +1,6 @@
-ros-noetic-dekstop-full
 ros-noetic-turtlebot3-msgs
 ros-noetic-rviz-imu-plugin
 ros-noetic-interactive-marker-twist-server
-ros-noetic-map-server 
+ros-noetic-map-server
 ros-noetic-gmapping
 ros-noetic-amcl
