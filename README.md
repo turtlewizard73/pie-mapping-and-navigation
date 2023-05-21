@@ -40,8 +40,14 @@ roslaunch pie_bringup bringup.launch
 ```
 
 3. mapping
+Start mapping
 ```
 roslaunch pie_bringup gmapping.launch
+```
+
+Save map:
+```
+rosrun map_server map_saver -f map
 ```
 
 ## El Plan
