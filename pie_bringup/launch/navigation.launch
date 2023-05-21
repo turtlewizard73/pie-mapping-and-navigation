@@ -2,7 +2,7 @@
 <launch>
 
   <!-- Map file for localization -->
-  <arg name="map_file" default="$(find pie_bringup)/maps/map.yaml"/>
+  <arg name="map_file" default="$(find pie_bringup)/maps/world_basic/map.yaml"/>
 
   <!-- Launch our Gazebo world -->
   <include file="$(find pie_bringup)/launch/amcl.launch">

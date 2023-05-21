@@ -34,6 +34,16 @@ make
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:"/home/turtlewizard/repos/ros-rob-project-mapping/gazebo_actor_collisions_plugin/build"
 ```
 
+2. starting
+```
+roslaunch pie_bringup bringup.launch
+```
+
+3. mapping
+```
+roslaunch pie_bringup gmapping.launch
+```
+
 ## El Plan
 **I. milestone - Basic models**
 Define physics
