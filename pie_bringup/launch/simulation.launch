@@ -1,12 +1,13 @@
 <!-- Launch robot ready for remote control -->
 <launch>
   <arg name="model" default="burger"/>
-  <arg name="world" default="$(find pie_bringup)/worlds/world_basic.world"/>
+  <arg name="world" default="$(find pie_bringup)/worlds/world_basic_actors.world"/>
   <arg name="x_pos" default="2.5"/>
   <arg name="y_pos" default="0.1"/>
   <arg name="z_pos" default="0.0"/>
   <arg name="yaw_pos" default="1.57"/>
   <arg name="visualize_laser" default="true"/>
+  <arg name="visualize_camera" default="true"/>
   <arg name="multi_robot_name" default=""/>
 
 <!-- Launching world -->
@@ -21,7 +22,8 @@
 
 <!-- Importing robot description -->
   <arg name="xacro_file" default="$(find xacro)/xacro --inorder '$(find pie_bringup)/urdf/pie_bot.urdf.xacro'"/>
-  <param name="robot_description" command="$(arg xacro_file) laser_visual:=$(arg visualize_laser)"/>
+  <param name="robot_description"
+    command="$(arg xacro_file) laser_visual:=$(arg visualize_laser) camera_visual:=$(arg visualize_camera)"/>
 
 
   <!-- Send joint values-->

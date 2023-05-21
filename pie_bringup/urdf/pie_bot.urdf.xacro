@@ -62,9 +62,9 @@
     <inertial>
       <origin xyz="0 0 0" />
       <mass value="2.8498940e-02" />
-      <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
-               iyy="1.1192413e-05" iyz="-1.4400107e-11"
-               izz="2.0712558e-05" />
+      <inertia ixx="1.8158194e-03" ixy="-9.3392e-12" ixz="1.04909e-11"
+               iyy="3.2922126e-03" iyz="5.75694e-11"
+               izz="1.8158194e-03" />
       </inertial>
   </link>
 
@@ -94,9 +94,9 @@
     <inertial>
       <origin xyz="0 0 0" />
       <mass value="2.8498940e-02" />
-      <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
-               iyy="1.1192413e-05" iyz="-1.4400107e-11"
-               izz="2.0712558e-05" />
+      <inertia ixx="1.8158194e-03" ixy="-9.3392e-12" ixz="1.04909e-11"
+               iyy="3.2922126e-03" iyz="5.75694e-11"
+               izz="1.8158194e-03" />
       </inertial>
   </link>
 
@@ -160,6 +160,41 @@
                iyy="0.001" iyz="0.0"
                izz="0.001" />
     </inertial>
+  </link>
+
+  <!-- Camera -->
+  <joint type="fixed" name="camera_joint">
+    <origin xyz="0.03 0 0.071" rpy="0 -0.52 0"/>
+    <child link="camera_link"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name='camera_link'>
+    <pose>0 0 0 0 0 0</pose>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia
+          ixx="1e-6" ixy="0" ixz="0"
+          iyy="1e-6" iyz="0"
+          izz="1e-6"
+      />
+    </inertial>
+
+    <collision name='collision'>
+      <origin xyz="0 0 0" rpy="0 0 0"/> 
+      <geometry>
+        <box size=".02 .02 .02"/>
+      </geometry>
+    </collision>
+
+    <visual name='camera_link_visual'>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size=".02 .02 .02"/>
+      </geometry>
+    </visual>
   </link>
 
 </robot>
