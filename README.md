@@ -25,95 +25,44 @@ Branch types:
 
 ## Documentation
 1. building gazebo actors plugin:
-```
-cd gazebo_actor_collisions_plugin
-mkdir build
-cd build
-cmake ..
-make
-export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:"/home/turtlewizard/repos/ros-rob-project-mapping/gazebo_actor_collisions_plugin/build"
-```
+    ```
+    cd gazebo_actor_collisions_plugin
+    mkdir build
+    cd build
+    cmake ..
+    make
+    export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:"/home/turtlewizard/repos/ros-rob-project-mapping/gazebo_actor_collisions_plugin/build"
+    ```
 
-2. starting
-```
-roslaunch pie_bringup bringup.launch
-```
+2. starting (define world file)
+    ```
+    roslaunch pie_bringup bringup.launch
+    ```
 
-3. mapping
-Start mapping
-```
-roslaunch pie_bringup gmapping.launch
-```
-
-Save map:
-```
-rosrun map_server map_saver -f map
-```
+3. mapping  
+    - Start mapping
+    ```
+    roslaunch pie_bringup gmapping.launch
+    ```
+    - Save map:
+    ```
+    rosrun map_server map_saver -f map
+    ```
 
 4. navigation
-```
-roslaunch pie_bringup navigation.launch
-```
+    ```
+    roslaunch pie_bringup navigation.launch
+    ```
 
-5. Frequencies
-base scan = 5.0
-global costmap update frequency: 5.0
-
-
-## El Plan
-**I. milestone - Basic models**
-Define physics
-1. Robot model: turtlebot
-    - wheel radius
-    - wheel spearation
-    - lidar link
-    - ... anything needded for starting mapping
-    - if easy and do not compromise simulation use full model
-    - xacro -> urdf -> tf tree
-2. World model:  
-    - Closed  --> room without door
-    - Walls whit doors
-    - Obsticles
-    - world launch file
-3. Basic launch file to run simulation with robot model and world
-
-**II. milestone - Mapping**  
-1. lidar packages
-    - actual robot -> lidar type
-    - simulating lidar in gazeboo
-    - config lidar parameters
-2. mapping package
-    - input: lidar
-    - output: map (how to save map, map format)
-3. odometry
-    - ???
-    - sensor fusion -> IMU (type) -> package
-4. do mapping
-    - launch file + mapping package
-    - teleop the shit out of the robot
-    - save the map
-
-**III. milestone - Navigation**  
-Automate robot to position
-1. global planner
-2. (global costmap)
-
-**IV. milestone - Simulating moving obsticles**  
-1. Obstacle model
-2. Simulate movement
-3. local costmap & local planner
-
-**V. milestone - Finalizing**  
-1. Models are ok
-2. Navigation works
-3. extra: aruco marker -> initial position
-4. README
-5. Hand in
-6. Beer(s)
+5. Frequencies  
+    - base scan = 5.0  
+    - global costmap update frequency: 5.0
+    - local costmap update frequency: 5.0
+    - ...
 
 
 ## Sources
-Add sources, links, documentations, any useful information, that might be useful or needed.
+Add sources, links, documentations, any useful information, that might be useful or helpful.
 1. Plan 3d scanning:
     - **Meshroom**
         - https://alicevision.org/#meshroom
@@ -123,9 +72,8 @@ Add sources, links, documentations, any useful information, that might be useful
         - https://www.capturingreality.com/
         - https://www.youtube.com/watch?v=i8AdX6OCvHg
         - Images and video
-    - by using equipment provided by karman studio shoot video or take pictures from robot, then make a 3d model by using some software. Touch up the generated model and import it into gazeboo.
 
-2. tutel bot stuff
+2. turtlebot docs
 https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#notices
 
 3. packages:
