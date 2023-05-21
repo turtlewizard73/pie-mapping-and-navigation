@@ -18,7 +18,7 @@
 	url = git@github.com:MOGI-ROS/Week-11-12-Robot-arms.git
 [submodule "workspace/src/turtlebot3"]
 	path = pie_mapping_and_navigation/turtlebot3
-	url = git@github.com:ROBOTIS-GIT/turtlebot3.git
+	url = https://github.com/ROBOTIS-GIT/turtlebot3.git
 	branch = noetic-devel
 [submodule "workspace/src/turtlebot3_simulations"]
 	path = pie_mapping_and_navigation/turtlebot3_simulations
