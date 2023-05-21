@@ -16,16 +16,16 @@
 [submodule "lesson-repos/Week-11-12-Robot-arms"]
 	path = lesson-repos/Week-11-12-Robot-arms
 	url = git@github.com:MOGI-ROS/Week-11-12-Robot-arms.git
-[submodule "pie_mapping_and_navigation/turtlebot3"]
-	path = pie_mapping_and_navigation/turtlebot3
-	url = https://github.com/ROBOTIS-GIT/turtlebot3.git
-	branch = noetic-devel
-[submodule "pie_mapping_and_navigation/turtlebot3_simulations"]
-	path = pie_mapping_and_navigation/turtlebot3_simulations
-	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-[submodule "pie_mapping_and_navigation/follow_waypoints"]
-	path = pie_mapping_and_navigation/follow_waypoints
-	url = https://github.com/danielsnider/follow_waypoints.git
 [submodule "gazebo_actor_collisions_plugin"]
 	path = gazebo_actor_collisions_plugin
 	url = https://github.com/EnjoyRobotics/gazebo_actor_collisions_plugin.git
+[submodule "turtlebot3"]
+	path = turtlebot3
+	url = https://github.com/ROBOTIS-GIT/turtlebot3.git
+	branch = noetic-devel
+[submodule "turtlebot3_simulations"]
+	path = turtlebot3_simulations
+	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+[submodule "follow_waypoints"]
+	path = follow_waypoints
+	url = https://github.com/danielsnider/follow_waypoints.git
