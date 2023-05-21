@@ -23,6 +23,17 @@ Branch types:
 - **fix**: fix branch
     - example name: fix-robot-color
 
+## Documentation
+1. building gazebo actors plugin:
+```
+cd gazebo_actor_collisions_plugin
+mkdir build
+cd build
+cmake ..
+make
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:"/home/turtlewizard/repos/ros-rob-project-mapping/gazebo_actor_collisions_plugin/build"
+```
+
 ## El Plan
 **I. milestone - Basic models**
 Define physics
