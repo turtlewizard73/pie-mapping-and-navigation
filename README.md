@@ -50,6 +50,16 @@ Save map:
 rosrun map_server map_saver -f map
 ```
 
+4. navigation
+```
+roslaunch pie_bringup navigation.launch
+```
+
+5. Frequencies
+base scan = 5.0
+global costmap update frequency: 5.0
+
+
 ## El Plan
 **I. milestone - Basic models**
 Define physics
