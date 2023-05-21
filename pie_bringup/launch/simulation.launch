@@ -1,7 +1,7 @@
 <!-- Launch robot ready for remote control -->
 <launch>
   <arg name="model" default="burger"/>
-  <arg name="world" default="$(find pie_bringup)/worlds/world_basic.world"/>
+  <arg name="world" default="$(find pie_bringup)/worlds/world_basic_actors.world"/>
   <arg name="x_pos" default="2.5"/>
   <arg name="y_pos" default="0.1"/>
   <arg name="z_pos" default="0.0"/>
