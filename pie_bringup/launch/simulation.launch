@@ -8,6 +8,7 @@
   <arg name="yaw_pos" default="1.57"/>
   <arg name="visualize_laser" default="true"/>
   <arg name="visualize_camera" default="true"/>
+  <arg name="use_camera" default="false"/>
   <arg name="multi_robot_name" default=""/>
 
 <!-- Launching world -->
@@ -23,7 +24,7 @@
 <!-- Importing robot description -->
   <arg name="xacro_file" default="$(find xacro)/xacro --inorder '$(find pie_bringup)/urdf/pie_bot.urdf.xacro'"/>
   <param name="robot_description"
-    command="$(arg xacro_file) laser_visual:=$(arg visualize_laser) camera_visual:=$(arg visualize_camera)"/>
+    command="$(arg xacro_file) laser_visual:=$(arg visualize_laser) camera_visual:=$(arg visualize_camera) use_camera:=$(arg use_camera)"/>
 
 
   <!-- Send joint values-->
