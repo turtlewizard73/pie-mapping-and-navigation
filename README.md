@@ -23,50 +23,76 @@ Branch types:
 - **fix**: fix branch
     - example name: fix-robot-color
 
-## Documentation
-1. setup and install  
-    building gazebo actors plugin:
+## Setup and install
+1. **Clone repository and update submodules**
+    ```
+    mkdir -p workspace/src
+    cd workspace/src
+    git clone https://github.com/turtlewizard73/pie-mapping-and-navigation.git
+    ```
+
+2. **Checkout on development and update submodules**
+    ```
+    cd pie-mapping-and-navigation
+    git fetch
+    git checkout development
+    git pull
+    git submodule update --init --recursive
+    ```
+
+3. **Build gazebo actors plugin**
     ```
     cd gazebo_actor_collisions_plugin
     mkdir build
     cd build
     cmake ..
     make
-    export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:"/home/turtlewizard/repos/ros-rob-project-mapping/gazebo_actor_collisions_plugin/build"
-    ```
-    install dependencies
-    ```
-    sudo xargs -a apt-dependencies.txt apt install -y
+    export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:$(pwd)
     ```
 
-2. starting (define world file)
+4. **Install dependencies and build the packages**
+    ```
+    cd workspace/src/pie-mapping-and-navigation
+    sudo xargs -a apt-dependencies.txt apt install -y
+    cd workspace
+    catkin_make
+    source devel/setup.bash
+    ```
+
+## How to use
+1. **start the simulation** (gazebo & rviz)
     ```
     roslaunch pie_bringup bringup.launch
     ```
 
-3. mapping  
-    - Start mapping
+2. **moving the robot**
+    ```
+    rosun teleop_twist_keboard teleop_twist_keboard.py
+    ```
+
+3. **mapping**
+    - start mapping
     ```
     roslaunch pie_bringup gmapping.launch
     ```
-    - Save map:
+    - save map:
     ```
     rosrun map_server map_saver -f map
     ```
 
-4. navigation
+4. **navigation**
     ```
     roslaunch pie_bringup navigation.launch
     ```
 
-5. Frequencies  
-    - base scan = 5.0  
+**Frequencies**
+    - base scan = 5.0
     - global costmap update frequency: 5.0
     - local costmap update frequency: 5.0
     - ...
 
 
-## Sources
+## Inspiration
 Add sources, links, documentations, any useful information, that might be useful or helpful.
 1. Plan 3d scanning:
     - **Meshroom**
