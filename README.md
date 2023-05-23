@@ -24,7 +24,8 @@ Branch types:
     - example name: fix-robot-color
 
 ## Documentation
-1. building gazebo actors plugin:
+1. setup and install  
+    building gazebo actors plugin:
     ```
     cd gazebo_actor_collisions_plugin
     mkdir build
@@ -32,6 +33,10 @@ Branch types:
     cmake ..
     make
     export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:"/home/turtlewizard/repos/ros-rob-project-mapping/gazebo_actor_collisions_plugin/build"
+    ```
+    install dependencies
+    ```
+    sudo xargs -a apt-dependencies.txt apt install -y
     ```
 
 2. starting (define world file)
