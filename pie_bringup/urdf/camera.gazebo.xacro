@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot name="rgb_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:arg name="camera_visual"  default="false"/>
+
     <gazebo reference="camera_link">
         <sensor type="camera" name="camera">
             <update_rate>30.0</update_rate>
@@ -27,8 +29,8 @@
             <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
             <alwaysOn>true</alwaysOn>
             <updateRate>0.0</updateRate>
-            <cameraName>camera</cameraName>
-            <imageTopicName>image</imageTopicName>
+            <cameraName>rgb_camera</cameraName>
+            <imageTopicName>rgb/image_raw</imageTopicName>
             <cameraInfoTopicName>camera_info</cameraInfoTopicName>
             <frameName>camera_link_optical</frameName>
             <hackBaseline>0.0</hackBaseline>

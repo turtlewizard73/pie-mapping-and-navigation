@@ -1,14 +1,14 @@
 <?xml version="1.0" ?>
-<robot name="rgb_camera" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find pie_bringup)/urdf/camera.gazebo.xacro"/>
-    <joint type="fixed" name="camera_joint">
+<robot name="rgbd_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find pie_bringup)/urdf/rgbd_camera.gazebo.xacro"/>
+    <joint type="fixed" name="rgbd_camera_joint">
         <origin xyz="0.03 0 0.071" rpy="0 -0.52 0"/>
-        <child link="camera_link"/>
+        <child link="rgbd_camera_link"/>
         <parent link="base_link"/>
         <axis xyz="0 1 0" />
     </joint>
 
-    <link name='camera_link'>
+    <link name='rgbd_camera_link'>
         <pose>0 0 0 0 0 0</pose>
         <inertial>
             <mass value="0.001"/>
@@ -20,14 +20,14 @@
             />
         </inertial>
 
-        <collision name='collision'>
+        <collision name='rgbd_camera_collision'>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
             <box size=".02 .02 .02"/>
             </geometry>
         </collision>
 
-        <visual name='camera_link_visual'>
+        <visual name='rgbd_camera_link_visual'>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
             <box size=".02 .02 .02"/>

@@ -91,6 +91,11 @@ Branch types:
     - local costmap update frequency: 5.0
     - ...
 
+## Stuff
+1. Image transport and compression
+    - wiki.ros.org/image_transport
+    - wiki.ros.org/compressed_image_transport (pont jó)
+    - wiki.ros.org/theora_image_transport (nagyon compressed)
 
 ## Inspiration
 Add sources, links, documentations, any useful information, that might be useful or helpful.
