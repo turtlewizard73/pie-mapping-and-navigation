@@ -8,7 +8,8 @@
   <arg name="map_file" default="$(find pie_bringup)/maps/world_basic/map.yaml"/>
   <arg name="x_pos" default="-5.75"/>
   <arg name="y_pos" default="3.0"/>
-  <arg name="z_pos" default="1.57"/>
+  <arg name="z_pos" default="0"/>
+  <arg name="yaw_pos" default="1.57"/>
 
   <!-- Simulation -->
   <include file="$(find pie_bringup)/launch/simulation.launch">
@@ -21,6 +22,7 @@
     <arg name="x_pos" default="$(arg x_pos)"/>
     <arg name="y_pos" default="$(arg y_pos)"/>
     <arg name="z_pos" default="$(arg z_pos)"/>
+    <arg name="yaw_pos" default="$(arg yaw_pos)"/>
   </include>
 
   <!-- Launch Rviz -->
@@ -61,6 +63,6 @@
   <include file="$(find pie_bringup)/launch/navigation.launch">
     <arg name="initial_pose_x"  default="$(arg x_pos)"/>
     <arg name="initial_pose_y"  default="$(arg y_pos)"/>
-    <arg name="initial_pose_a"  default="$(arg z_pos)"/>
+    <arg name="initial_pose_a"  default="$(arg yaw_pos)"/>
   </include>
 </launch>
