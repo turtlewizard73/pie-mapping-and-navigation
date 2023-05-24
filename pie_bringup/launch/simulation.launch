@@ -47,7 +47,7 @@
   </node>
 
   <!-- Launching gazebo with turtlebot3_burger.urdf.xacro and turtlebot3_burger.gazebo.xacro -->
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
     args="-urdf -param robot_description -model pie_bot
       -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg yaw_pos)"/>
 

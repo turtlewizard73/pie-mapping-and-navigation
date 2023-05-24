@@ -1,15 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-
-  <!-- Map file for localization -->
-  <arg name="map_file" default="$(find pie_bringup)/maps/world_basic/map.yaml"/>
-  <!-- It can be an environmental variable, too -->
-  <!--arg name="map_file" default="$(env AMCL_MAP_FILE)"/-->
-
-  <!-- Map Server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
-  </node>
-
   <!-- AMCL Node -->
   <arg name="initial_pose_x"  default="0.0"/>
   <arg name="initial_pose_y"  default="0.0"/>
