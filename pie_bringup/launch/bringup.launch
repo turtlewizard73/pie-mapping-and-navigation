@@ -2,7 +2,6 @@
 
 <launch>
 
-  <!-- RViz config file -->
   <arg name="rvizconfig" default="$(find pie_bringup)/config/pie_sim.rviz" />
   <arg name="world" default="$(find pie_bringup)/worlds/world_basic_actors.world" />
   <arg name="map_file" default="$(find pie_bringup)/maps/world_basic/map.yaml"/>
