@@ -12,13 +12,14 @@
   <arg name="use_rgbd_camera" default="false"/>
   <arg name="visualize_rgbd_camera" default="false"/>
   <arg name="multi_robot_name" default=""/>
+  <arg name="gazebo_gui" default="true"/>
 
 <!-- Launching world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world)"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="true"/>
+    <arg name="gui" value="$(arg gazebo_gui)"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
   </include>

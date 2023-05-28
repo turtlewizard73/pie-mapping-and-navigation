@@ -13,15 +13,15 @@
   <!-- Simulation -->
   <include file="$(find pie_bringup)/launch/simulation.launch">
     <arg name="world" value="$(arg world)"/>
-    <arg name="visualize_laser" default="false"/>
-    <arg name="use_camera" default="false"/>
-    <arg name="visualize_camera" default="false"/>
-    <arg name="use_rgbd_camera" default="false"/>
-    <arg name="visualize_rgbd_camera" default="false"/>
-    <arg name="x_pos" default="$(arg x_pos)"/>
-    <arg name="y_pos" default="$(arg y_pos)"/>
-    <arg name="z_pos" default="$(arg z_pos)"/>
-    <arg name="yaw_pos" default="$(arg yaw_pos)"/>
+    <arg name="visualize_laser" value="false"/>
+    <arg name="use_camera" value="false"/>
+    <arg name="visualize_camera" value="false"/>
+    <arg name="use_rgbd_camera" value="false"/>
+    <arg name="visualize_rgbd_camera" value="false"/>
+    <arg name="x_pos" value="$(arg x_pos)"/>
+    <arg name="y_pos" value="$(arg y_pos)"/>
+    <arg name="z_pos" value="$(arg z_pos)"/>
+    <arg name="yaw_pos" value="$(arg yaw_pos)"/>
   </include>
 
   <!-- Launch Rviz -->
