@@ -4,7 +4,7 @@
   <xacro:include filename="$(find pie_bringup)/urdf/pie_bot.gazebo.xacro"/>
   <xacro:arg name="use_camera"  default="false"/>
   <xacro:arg name="use_rgbd_camera"  default="false"/>
-
+<!-- https://github.com/ROBOTIS-GIT/turtlebot3_simulations/blob/8241af04a4e56e656d4be24a5c3971e3359bf751/turtlebot3_gazebo/models/turtlebot3_burger/model.sdf#L146 -->
   <xacro:if value="$(arg use_camera)">
     <xacro:include filename="$(find pie_bringup)/urdf/camera.urdf.xacro"/>
   </xacro:if>

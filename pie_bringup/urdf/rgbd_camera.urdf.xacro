@@ -2,7 +2,7 @@
 <robot name="rgbd_camera" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find pie_bringup)/urdf/rgbd_camera.gazebo.xacro"/>
     <joint type="fixed" name="rgbd_camera_joint">
-        <origin xyz="0.03 0 0.071" rpy="0 -0.52 0"/>
+        <origin xyz="0.03 0 0.071" rpy="0 -0.35 0"/>
         <child link="rgbd_camera_link"/>
         <parent link="base_link"/>
         <axis xyz="0 1 0" />
