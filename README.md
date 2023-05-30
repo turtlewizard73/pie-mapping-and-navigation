@@ -67,7 +67,7 @@ Branch types:
 
 2. **moving the robot**
     ```
-    rosun teleop_twist_keboard teleop_twist_keboard.py
+    rosrun teleop_twist_keyboard teleop_twist_keyboard.py
     ```
 
 3. **mapping**
