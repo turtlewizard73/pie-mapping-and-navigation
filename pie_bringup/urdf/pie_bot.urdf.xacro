@@ -4,7 +4,7 @@
   <xacro:include filename="$(find pie_bringup)/urdf/pie_bot.gazebo.xacro"/>
   <xacro:arg name="use_camera"  default="false"/>
   <xacro:arg name="use_rgbd_camera"  default="false"/>
-
+<!-- https://github.com/ROBOTIS-GIT/turtlebot3_simulations/blob/8241af04a4e56e656d4be24a5c3971e3359bf751/turtlebot3_gazebo/models/turtlebot3_burger/model.sdf#L146 -->
   <xacro:if value="$(arg use_camera)">
     <xacro:include filename="$(find pie_bringup)/urdf/camera.urdf.xacro"/>
   </xacro:if>
@@ -67,6 +67,14 @@
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>100000.0</mu>
+            <mu2>100000.0</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
 
     <inertial>
@@ -76,6 +84,10 @@
                iyy="1.1192413e-05" iyz="-1.4400107e-11"
                izz="2.0712558e-05" />
       </inertial>
+      <!-- <inertia ixx="1.8158194e-03" ixy="-9.3392e-12" ixz="1.04909e-11"
+               iyy="3.2922126e-03" iyz="5.75694e-11"
+               izz="1.8158194e-03" />
+      </inertial> -->
   </link>
 
   <joint name="wheel_right_joint" type="continuous">
@@ -99,6 +111,14 @@
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>100000.0</mu>
+            <mu2>100000.0</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
 
     <inertial>
@@ -108,6 +128,10 @@
                iyy="1.1192413e-05" iyz="-1.4400107e-11"
                izz="2.0712558e-05" />
       </inertial>
+      <!-- <inertia ixx="1.8158194e-03" ixy="-9.3392e-12" ixz="1.04909e-11"
+               iyy="3.2922126e-03" iyz="5.75694e-11"
+               izz="1.8158194e-03" />
+      </inertial> -->
   </link>
 
   <joint name="caster_back_joint" type="fixed">

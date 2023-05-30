@@ -33,7 +33,7 @@ Branch types:
 
 2. **Checkout on development and update submodules**
     ```
-    cd pie-mapping-and-navigation
+    cd src/pie-mapping-and-navigation
     git fetch
     git checkout development
     git pull
