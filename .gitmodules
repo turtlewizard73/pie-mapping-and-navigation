@@ -14,3 +14,18 @@
 [submodule "lesson-repos/Week-1-2-Introduction-to-ROS"]
 	path = lesson-repos/Week-1-2-Introduction-to-ROS
 	url = https://github.com/MOGI-ROS/Week-1-2-Introduction-to-ROS.git
+[submodule "lesson-repos/Week-3-4-Gazebo-basics"]
+	path = lesson-repos/Week-3-4-Gazebo-basics
+	url = https://github.com/MOGI-ROS/Week-3-4-Gazebo-basics.git
+[submodule "lesson-repos/Week-5-6-Gazebo-sensors"]
+	path = lesson-repos/Week-5-6-Gazebo-sensors
+	url = https://github.com/MOGI-ROS/Week-5-6-Gazebo-sensors.git
+[submodule "lesson-repos/Week-7-8-Navigation"]
+	path = lesson-repos/Week-7-8-Navigation
+	url = https://github.com/MOGI-ROS/Week-7-8-Navigation.git
+[submodule "lesson-repos/Week-9-10-Simple-arm"]
+	path = lesson-repos/Week-9-10-Simple-arm
+	url = https://github.com/MOGI-ROS/Week-9-10-Simple-arm.git
+[submodule "lesson-repos/Week-11-12-Robot-arms"]
+	path = lesson-repos/Week-11-12-Robot-arms
+	url = https://github.com/MOGI-ROS/Week-11-12-Robot-arms.git
