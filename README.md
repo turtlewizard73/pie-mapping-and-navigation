@@ -6,8 +6,8 @@ Repo for Robotrendszerek laboratórium project #2022-23/II
 - Mapping a complex room/building and autonomous navigation using the navigation stack
 - Simulation of moving obstacles (e.g. humans, animals)
 
-<video src='https://drive.google.com/file/d/1upHrw3OPzft92lK2e8xXOTXydcQiQ1aS/view?usp=sharing' width=180>
-</video>
+
+<a href="https://drive.google.com/file/d/1upHrw3OPzft92lK2e8xXOTXydcQiQ1aS/view?usp=sharing"><img height="400" src="./assets/mapping.png"></a>
 
 ## Setup and install
 1. **Clone repository and update submodules**
@@ -105,8 +105,14 @@ Repo for Robotrendszerek laboratórium project #2022-23/II
         - [robot_pose_ekf](http://wiki.ros.org/robot_pose_ekf)
 
 3. navigation.launch
+    - nodes:
+        - amcl
+        - move_base
+        - follow_waypoints
 
 4. gmapping.launch
+    - ndoes:
+        - gmapping
 
 
 
