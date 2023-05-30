@@ -1,27 +1,13 @@
 # ros-rob-project-mapping
-Repo for Robotrendszerek laboratórium project
+Repo for Robotrendszerek laboratórium project #2022-23/II
 
 ## Project description
-- Navigációs stack behangolása bonyolult szimulációs környezetben
-- Egy bonyolult szoba / épület feltérképezése és autonóm navigáció a navigációs stack használatával
-- Mozgó akadályok szimulációja (pl ember, állat)
+- Navigation stack tuning in complex simulation environments
+- Mapping a complex room/building and autonomous navigation using the navigation stack
+- Simulation of moving obstacles (e.g. humans, animals)
 
-## Github workflow
-How to add new functionality to the stack:
-After working main branch
-1. Create feature/fix branch from **main**
-2. Develop feature set
-3. Test
-4. If testing was successful --> create **PR**
-5. **PR** has to be tested by other project member
-6. If it was successful --> squash merge onto **main**
-
-Branch types:
-- **main**: main branch, "protected"
-- **feature**: feature branch, for adding new features, or expanding existing features
-    - example name: feature-lidar-xacro
-- **fix**: fix branch
-    - example name: fix-robot-color
+<video src='https://drive.google.com/file/d/1upHrw3OPzft92lK2e8xXOTXydcQiQ1aS/view?usp=sharing' width=180>
+</video>
 
 ## Setup and install
 1. **Clone repository and update submodules**
@@ -85,33 +71,42 @@ Branch types:
     roslaunch pie_bringup navigation.launch
     ```
 
-**Frequencies**
-    - base scan = 5.0
-    - global costmap update frequency: 5.0
-    - local costmap update frequency: 5.0
-    - ...
+## Main launch files:
+1. bringup.launch
+    - parameters:
+        - rvizconfig: rviz config file
+        - world: world to use in simulation
+        - map_file: map file to upload onto map server
+        - x_pos, y_pos, z_pos, yaw_pos: positions to spawn the robot in and also used az initial pose with amcl
+    - launch includes:
+        - simulation.launch
+        - navigation.launch
+    - nodes:
+        - rviz
+        - [interactive marker twist server](http://wiki.ros.org/interactive_marker_twist_server)
+        - [hector trajectory server](http://wiki.ros.org/hector_trajectory_server)
+        - [map server](http://wiki.ros.org/map_server)
 
-## Stuff
-1. Image transport and compression
-    - wiki.ros.org/image_transport
-    - wiki.ros.org/compressed_image_transport (pont jó)
-    - wiki.ros.org/theora_image_transport (nagyon compressed)
+2. simulation.launch
+    - parameters:
+        - world: world to use in simulation
+        - visualize_laser: set gazebo visualization
+        - use_camera: loads the camera xacro file at startup if selected
+        - visualize_camera: set gazebo visualization
+        - use_rgbd_camera: loads the depth camera xacro file at startup if selected
+        - visualize_rgbd_camera: set gazebo visualization
+        - x_pos, y_pos, z_pos, yaw_pos: positions to spawn the robot in and also used az initial pose with amcl
+    - launch includes:
+        - gazebo_ros empty_world.launch
+    - nodes:
+        - [robot_state_publisher](http://wiki.ros.org/robot_state_publisher)
+        - [joint_state_publisher](http://wiki.ros.org/joint_state_publisher)
+        - gazebo_ros spawn_urdf
+        - [robot_pose_ekf](http://wiki.ros.org/robot_pose_ekf)
 
-## Inspiration
-Add sources, links, documentations, any useful information, that might be useful or helpful.
-1. Plan 3d scanning:
-    - **Meshroom**
-        - https://alicevision.org/#meshroom
-        - https://www.youtube.com/watch?v=yKbyVDK2Ep8
-        - Uses images
-    - **RealityCapture**
-        - https://www.capturingreality.com/
-        - https://www.youtube.com/watch?v=i8AdX6OCvHg
-        - Images and video
+3. navigation.launch
 
-2. turtlebot docs
-https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#notices
+4. gmapping.launch
 
-3. packages:
-magic imu arrow
-http://wiki.ros.org/rviz_imu_plugin
+
+
